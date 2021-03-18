@@ -1,0 +1,150 @@
+$blur: 5px;
+$color-white: #fff;
+$color-black: #000;
+$opacity: 0.7;
+
+.display__inline-block {
+  display: inline-block;
+}
+
+.flex__center__vertical {
+  align-items: center;
+  display: inline-flex;
+}
+
+.flex {
+  display: inline-flex;
+
+  &__bottom {
+    @extend .flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  &__center {
+    @extend .flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__left {
+    @extend .flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &__right {
+    @extend .flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &__top {
+    @extend .flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+}
+
+.react-spinner {
+  &-position__relative {
+    position: relative;
+  }
+
+  &--deactive {
+    display: none !important;
+  }
+}
+
+.test > span {
+  margin: 30px 20px;
+}
+
+.mode {
+  &--full {
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+  }
+
+  &--inside {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+.overlay {
+  &--dark {
+    background: rgba($color-black, $opacity);
+  }
+
+  &--light {
+    background: rgba($color-white, $opacity);
+  }
+}
+
+.blur {
+  backdrop-filter: blur($blur);
+}
+
+.uikit {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+  font: inherit;
+  color: inherit;
+  text-transform: none;
+  padding: 0;
+  background-color: transparent;
+  display: inline-block;
+  fill: currentcolor;
+  line-height: 0;
+
+  &-anim-rotate > * {
+    animation: uikit-anim-rotate 1.4s linear infinite;
+    transform: translate(0, 0);
+
+    & > * {
+      stroke-dasharray: 88px;
+      stroke-dashoffset: 0;
+      transform-origin: center;
+      animation: uikit-anim-dash 1.4s ease-in-out infinite;
+      stroke-width: 1;
+      stroke-linecap: round;
+    }
+  }
+
+  & svg {
+    overflow: hidden;
+  }
+
+}
+
+@keyframes uikit-anim-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(270deg);
+  }
+}
+
+@keyframes uikit-anim-dash {
+  0% {
+    stroke-dashoffset: 88px;
+  }
+  50% {
+    stroke-dashoffset: 22px;
+    transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 88px;
+    transform: rotate(450deg);
+  }
+}
