@@ -1,5 +1,5 @@
-const CLASS = 'react-spinner';
-export const DEACTIVE_CLASS = `${CLASS}--deactive`;
+const CLASS = 'react_spinner';
+export const DEACTIVE_CLASS = `${CLASS}__deactive`;
 export const DIRECTION = {
   RTL: 'rtl',
   LTR: 'ltr'
@@ -38,11 +38,11 @@ export const POSITION = {
 }
 
 export const POSITION_MAP = {
-  BOTTOM: 'flex__bottom',
-  CENTER: 'flex__center',
-  LEFT: 'flex__left',
-  RIGHT: 'flex__right',
-  TOP: 'flex__top'
+  BOTTOM: 'flex_bottom',
+  CENTER: 'flex_center',
+  LEFT: 'flex_left',
+  RIGHT: 'flex_right',
+  TOP: 'flex_top'
 }
 
-export const RELATIVE_CLASS = `${CLASS}-position__relative`;
+export const RELATIVE_CLASS = `${CLASS}_position__relative`;

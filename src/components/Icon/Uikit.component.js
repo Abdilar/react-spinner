@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {isColorProp, isEmptyString} from "../../utils/functions";
 
-import '../index.style.scss';
+import style from '../index.module.scss';
 
 const UIkit = (props) => {
   const strokeWidth = `${1 / props.ratio}px`;
@@ -11,7 +11,7 @@ const UIkit = (props) => {
   const {spinner = ''} = props.className;
 
   return (
-    <span className={`uikit uikit-anim-rotate ${spinner}`}>
+    <span className={`${style.uikit} ${style.uikit_anim_rotate} ${spinner}`}>
       <svg width={size} height={size} viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
         <circle fill="none" stroke={color} style={{strokeWidth}} cx="15" cy="15" r="14" />
       </svg>

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {isColorProp, isEmptyString} from "../../utils/functions";
 
-import '../index.style.scss';
+import style from '../index.module.scss';
 
 const ThreeDots = (props) => {
   const size = 30 * props.ratio;
@@ -10,7 +10,7 @@ const ThreeDots = (props) => {
   const {spinner = ''} = props.className;
 
   return (
-    <span className={`flex__center__vertical ${spinner}`} style={{width: `${size}px`, height: `${size}px`}}>
+    <span className={`${style.flex_center_vertical} ${spinner}`} style={{width: `${size}px`, height: `${size}px`}}>
       <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size / 4} fill={color} viewBox="0 0 120 30">
         <circle cx="15" cy="15" r="15">
           <animate attributeName="r" begin="0s" calcMode="linear" dur="0.8s" from="15" repeatCount="indefinite" to="15" values="15;9;15"/>

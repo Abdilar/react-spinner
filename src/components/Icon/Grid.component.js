@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {isColorProp, isEmptyString} from "../../utils/functions";
 
-import '../index.style.scss';
+import style from '../index.module.scss';
 
 const Grid = (props) => {
   const size = 30 * props.ratio;
@@ -10,7 +10,7 @@ const Grid = (props) => {
   const {spinner = ''} = props.className;
 
   return (
-    <span className={`display__inline-block ${spinner}`} style={{width: `${size}px`, height: `${size}px`}}>
+    <span className={`${style.display_inline_block} ${spinner}`} style={{width: `${size}px`, height: `${size}px`}}>
       <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} fill={color} viewBox="0 0 105 105">
       <circle cx="12.5" cy="12.5" r="12.5">
         <animate attributeName="fill-opacity" begin="0s" calcMode="linear" dur="1s" repeatCount="indefinite" values="1;.2;1"/>

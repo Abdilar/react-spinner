@@ -3,11 +3,11 @@ $color-white: #fff;
 $color-black: #000;
 $opacity: 0.7;
 
-.display__inline-block {
+.display_inline_block {
   display: inline-block;
 }
 
-.flex__center__vertical {
+.flex_center_vertical {
   align-items: center;
   display: inline-flex;
 }
@@ -15,53 +15,49 @@ $opacity: 0.7;
 .flex {
   display: inline-flex;
 
-  &__bottom {
+  &_bottom {
     @extend .flex;
     align-items: flex-end;
     justify-content: center;
   }
 
-  &__center {
+  &_center {
     @extend .flex;
     align-items: center;
     justify-content: center;
   }
 
-  &__left {
+  &_left {
     @extend .flex;
     align-items: center;
     justify-content: flex-start;
   }
 
-  &__right {
+  &_right {
     @extend .flex;
     align-items: center;
     justify-content: flex-end;
   }
 
-  &__top {
+  &_top {
     @extend .flex;
     align-items: flex-start;
     justify-content: center;
   }
 }
 
-.react-spinner {
-  &-position__relative {
+.react_spinner {
+  &_position__relative {
     position: relative;
   }
 
-  &--deactive {
+  &__deactive {
     display: none !important;
   }
 }
 
-.test > span {
-  margin: 30px 20px;
-}
-
 .mode {
-  &--full {
+  &__full {
     bottom: 0;
     left: 0;
     position: fixed;
@@ -69,7 +65,7 @@ $opacity: 0.7;
     top: 0;
   }
 
-  &--inside {
+  &__inside {
     bottom: 0;
     left: 0;
     position: absolute;
@@ -79,11 +75,11 @@ $opacity: 0.7;
 }
 
 .overlay {
-  &--dark {
+  &__dark {
     background: rgba($color-black, $opacity);
   }
 
-  &--light {
+  &__light {
     background: rgba($color-white, $opacity);
   }
 }
@@ -106,7 +102,7 @@ $opacity: 0.7;
   fill: currentcolor;
   line-height: 0;
 
-  &-anim-rotate > * {
+  &_anim_rotate > * {
     animation: uikit-anim-rotate 1.4s linear infinite;
     transform: translate(0, 0);
 

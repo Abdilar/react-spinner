@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {isColorProp, isEmptyString} from "../../utils/functions";
 
-import '../index.style.scss';
+import style from '../index.module.scss';
 
 const BallTriangle = (props) => {
   const strokeRate = props.ratio > 1 ?
@@ -16,7 +16,7 @@ const BallTriangle = (props) => {
   const {spinner = ''} = props.className;
 
   return (
-    <span className={`display__inline-block ${spinner}`} style={{width: `${size}px`, height: `${size}px`}}>
+    <span className={`${style.display_inline_block} ${spinner}`} style={{width: `${size}px`, height: `${size}px`}}>
       <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} stroke={color} viewBox="0 0 57 57">
         <g fill="none" fillRule="evenodd" style={{strokeWidth}} transform="translate(1 1)">
           <circle cx="5" cy="50" r="5">

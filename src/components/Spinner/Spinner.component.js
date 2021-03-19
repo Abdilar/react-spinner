@@ -1,46 +1,56 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {MODE, NAME, POSITION, RELATIVE_CLASS, DEACTIVE_CLASS, POSITION_MAP, DIRECTION} from '../../configs/variables';
+import setState from '../../hooks/setState.hook';
 import {isColorProp, isEmptyString, randomNumber} from '../../utils/functions';
-import {BallTriangle, Grid, Oval, Puff, Rings, TailSpin, ThreeDots, UIkit} from '../';
+import * as Component from '../';
+
+import style from '../index.module.scss';
 
 const Spinner = (props) => {
   const {name, id} = props;
-  const [isRTL, setIsRTL] = useState(false);
+  const [, setIsRTL, getIsRTL] = setState(false);
   const spinnerRef = useRef(null);
-  const mode = props.mode === MODE.FULL ? 'mode--full' : 'mode--inside';
+  const mode = props.mode === MODE.FULL ? style.mode__full : style.mode__inside;
   const color = props.dark  ? 'dark' : 'light';
-  const overlay = props.overlay ? `overlay--${color}` : '';
-  const blur = props.blur ? 'blur' : '';
+  const overlay = props.overlay ? style[`overlay__${color}`] : '';
+  const blur = props.blur ? style.blur : '';
   const {spinnerWrapper = ''} = props.className;
 
   const getIcon = () => {
     switch (name) {
       case NAME.UIKIT:
-        return <UIkit {...props} />
+        return <Component.UIkit {...props} />
       case NAME.BALL_TRIANGLE:
-        return <BallTriangle {...props} />
+        return <Component.BallTriangle {...props} />
       case NAME.GRID:
-        return <Grid {...props} />
+        return <Component.Grid {...props} />
       case NAME.OVAL:
-        return <Oval {...props} />
+        return <Component.Oval {...props} />
       case NAME.PUFF:
-        return <Puff {...props} />
+        return <Component.Puff {...props} />
       case NAME.RINGS:
-        return <Rings {...props} />
+        return <Component.Rings {...props} />
       case NAME.TAIL_SPIN:
-        return <TailSpin {...props} />
+        return <Component.TailSpin {...props} />
       case NAME.THREE_DOTS:
-        return <ThreeDots {...props} />
+        return <Component.ThreeDots {...props} />
       default:
-        return <UIkit {...props} />
+        return <Component.UIkit {...props} />
     }
   }
 
+  const didMount = () => {
+    (async () => {
+      toggleSpinner(false);
+      calculateRTL();
+      calcFullMode();
+      await getPosition();
+    })()
+  }
+
   useEffect(() => {
-    calculateRTL();
-    calcFullMode();
-    toggleSpinner(false);
+    didMount();
   }, []);
 
   useEffect(() => {
@@ -63,31 +73,30 @@ const Spinner = (props) => {
     const parent = spinnerRef.current.parentElement;
 
     if (props.mode === MODE.INSIDE) {
-      parent.classList.add(RELATIVE_CLASS);
+      parent.classList.add(style[RELATIVE_CLASS]);
       return;
     }
-    parent.classList.remove(RELATIVE_CLASS);
+    parent.classList.remove(style[RELATIVE_CLASS]);
   }
 
   const toggleSpinner = (isActive) => {
     const spinner = spinnerRef.current;
-
     if (!isActive) {
-      spinner.classList.add(DEACTIVE_CLASS);
+      spinner.classList.add(style[DEACTIVE_CLASS]);
       return;
     }
-    spinner.classList.remove(DEACTIVE_CLASS);
+    spinner.classList.remove(style[DEACTIVE_CLASS]);
   }
 
-  const getPosition = () => {
-    const positionDir = isRTL ? POSITION.RTL : POSITION.LTR;
+  const getPosition = async () => {
+    const spinner = spinnerRef.current;
+    const positionDir = await getIsRTL() ? POSITION.RTL : POSITION.LTR;
     const position = positionDir[props.position];
-    console.log('get pos: ', isRTL, props.position, positionDir, position, POSITION_MAP[position])
-    return POSITION_MAP[position];
+    spinner.classList.add(style[POSITION_MAP[position]]);
   }
 
   return (
-    <div id={id} ref={spinnerRef} className={`${mode} ${overlay} ${blur} ${spinnerWrapper} ${getPosition()}`}>
+    <div id={id} ref={spinnerRef} className={`${mode} ${overlay} ${blur} ${spinnerWrapper}`}>
       {getIcon()}
     </div>
   )
@@ -101,9 +110,9 @@ Spinner.defaultProps = {
   id: `spinner-${randomNumber(10000)}`,
   isLoading: false,
   mode: MODE.INSIDE,
-  name: NAME.BALL_TRIANGLE,
-  overlay: false,
-  position: POSITION.LTR.BOTTOM,
+  name: NAME.UIKIT,
+  overlay: true,
+  position: POSITION.LTR.CENTER,
   ratio: 1
 };
 
