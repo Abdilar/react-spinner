@@ -1,11 +1,15 @@
-# @sakit-sa/react-master-detail
+# @sakit-sa/react-spinner
 
-> Simple, easy master-detail for React
+> Simple, easy spinner for React
 
-[![NPM](https://img.shields.io/npm/v/@sakit-sa/react-master-detail.svg)](https://www.npmjs.com/package/@sakit-sa/react-master-detail) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/@sakit-sa/react-spinner.svg)](https://www.npmjs.com/package/@sakit-sa/react-spinner) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
+## Spinner
+
+![Spinner gif](https://raw.githubusercontent.com/Abdilar/react-spinner/master/src/asset/images/spinner.gif)
 
 ## Live Playground
-For examples of the react-master-detail in action, go to https://abdilar.github.io/react-master-detail.
+For examples of the react-spinner in action, go to https://abdilar.github.io/react-spinner.
 
 OR
 
@@ -19,82 +23,46 @@ To run that demo on your own computer:
 ### Install
 
 ```sh
-npm install @sakit-sa/react-master-detail
+npm install @sakit-sa/react-spinner
 ```
 
 ### Usage
 ```jsx
 import React from 'react';
 
-import MasterDetail from '@sakit-sa/react-master-detail';
-import '@sakit-sa/react-master-detail/dist/index.css';
+import Spinner, {POSITIONS, MODE, NAME} from '@sakit-sa/react-spinner';
+import '@sakit-sa/react-spinner/dist/index.css';
 
 const App = () => (
-  <MasterDetail>
-    <div>
-      <div>Master header</div>
-      <div>Master body</div>
-    </div>
-    <div>
-      <div>Detail header</div>
-      <div>Detail body</div>
-    </div>
-  </MasterDetail>
+  <Spinner
+    isLoading={true}
+    name={NAME.PUFF}
+    mode={MODE.INSIDE}
+    position={POSITIONS.CENTER}
+  />
 );
 ```
 
 ### Props
 Name | Type | Default | Description
 -----|------|-------|-----
-**adjustable**|`boolean`|`true`|Boolean value to control whether can adjust the master and the detail sections.
-**canClose**|`boolean`|`true`|Boolean value to control whether can close detail section.
-**centerAlign**|`boolean`|`true`|Boolean value to control whether can aligns master section in the center.
+**isLoading**|`boolean`|`false`|Boolean value to control whether the spinner is shown.
+**name**|`string`|`uikit`|Specifies the name of the spinner (name includes: `uikit`, `puff`, `grid`, `oval`, `rings`, `ball-triangle`, `tail-spin`, `three-dots`).
+**mode**|`string`|`inside`|Specifies the mode of the spinner (mode includes: `inside`, `full`).
 **className**|`object`|`{}`|Apply a className to the control
-**defaultMasterWidth**|`number`|`600px`|Set initial width of master section.
-**detailMinWidth**|`string` `number` `object`|`550px`|Set minimum width of detail section.
-**direction**|`string`|`ltr`|Is the master-detail direction (right-to-left or left-to-right)
-**id**|`string`|`master-detail-[randomNumber(10000)]`|The unique identifier for the component.
-**masterMinWidth**|`string` `number` `object`|`400px`|Set minimum width of master section.
-**masterWidth**|`string` `number` `object`|`600px`|Set width of master section.
-**noDetail**|`boolean`|`false`|Boolean value to control whether to show details section (Affects showDetail property).
-**renderAdjustIcon**|`element`|`<i className="icon-align" />`|Custom adjust icon
-**renderCloseIcon**|`element`|`<i className="icon-close" />`|Custom close icon
-**showDetail**|`boolean`|`true`|Boolean value to control whether show detail section.
-**onClose**|`function`|`-`|Trigger when detail section closed.
+**overlay**|`boolean`|`false`|Boolean value to control whether the spinner has an overlay.
+**blur**|`boolean`|`false`|Boolean value to set the blur of the spinner background.
+**dark**|`boolean`|`false`|Boolean value to set the darkness of the spinner background.
+**id**|`string`|`spinner-[randomNumber(10000)]`|The unique identifier for the component.
+**ratio**|`number`|`1`|Specifies the size of the spinner.
+**color**|`string`|`''`|Specifies the color of the spinner (color format: `#ff00bb`, `rgb(124, 100, 0)`, `rgb(100%, 2.5%, 0%)`, `rgba(255, 0, 0, 0.5)`, `hsl(140, 2%, 50%)`, `hsla(140, 2%, 50%, 0.5)`).
+**position**|`string`|`CENTER`|Specifies the position of the spinner (position includes: `BOTTOM`, `CENTER`, `LEFT`, `RIGHT`, `TOP`).
 
 ### className Token
-`align` `alignIcon` `detail` `detailBody` `detailHeader` `detailWrapper` `masterBody` `masterHeader` `masterWrapper` `wrapper`
+`wrapper` `spinner`
 
-See examples for more information (go to https://abdilar.github.io/react-master-detail/?path=/story/theme--class-name)
+See examples for more information (go to https://abdilar.github.io/react-spinner/?path=/story/theme-prop--class-name)
 
-### masterWidth Token
-Type | Description | example
------|-------------|--------
-number | Based on px | `masterWidth={500}`
-string | Either based on percentage or based on pixel | `masterWidth="30%"` `masterWidth="500px"`
-object | For responsive mode | `masterWidth = { xxdt: "40%", xdt: "400px", dt: 300, mdt: 200 };`
-
-### masterMinWidth Token
-Type | Description | example
------|-------------|--------
-number | Based on px | `masterMinWidth={500}`
-string | Either based on percentage or based on pixel | `masterMinWidth="30%"` `masterWidth="500px"`
-object | For responsive mode | `masterMinWidth = { xxdt: "40%", xdt: "400px", dt: 300, mdt: 200 };`
-
-### detailMinWidth Token
-Type | Description | example
------|-------------|--------
-number | Based on px | `detailMinWidth={500}`
-string | Either based on percentage or based on pixel | `detailMinWidth="30%"` `masterWidth="500px"`
-object | For responsive mode | `detailMinWidth = { xxdt: "40%", xdt: "400px", dt: 300, mdt: 200 };`
-
-#### Responsive Mode Tips
-```aidl
-xxdt: Affects device widths of 1920px and larger.
-xdt: Affects device widths of 1600px and larger.
-dt: Affects device widths of 1200px and larger.
-mdt: Affects device widths of 960px and larger.
-```
 ### License
 
 MIT © [Saeed Abdilar](https://github.com/Abdilar)

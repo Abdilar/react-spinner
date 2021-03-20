@@ -124,17 +124,17 @@ Spinner.defaultProps = {
 };
 
 Spinner.propTypes = {
-  blur: PropTypes.bool, //
+  blur: PropTypes.bool,
   className: PropTypes.object,
-  color: (props, propName, componentName) => isColorProp(props, propName, componentName), //
-  dark: PropTypes.bool, //
-  id: PropTypes.string, //
-  isLoading: PropTypes.bool, //
-  mode: PropTypes.string, //
-  name: PropTypes.string, //
-  overlay: PropTypes.bool, //
-  position: PropTypes.string, //
-  ratio: PropTypes.number //
+  color: (props, propName, componentName) => isColorProp(props, propName, componentName),
+  dark: PropTypes.bool,
+  id: PropTypes.string,
+  isLoading: PropTypes.bool.isRequired,
+  mode: PropTypes.string,
+  name: PropTypes.string,
+  overlay: PropTypes.bool,
+  position: PropTypes.string,
+  ratio: PropTypes.number
 };
 
 export default Spinner;
