@@ -15,70 +15,66 @@ body {
 }
 
 #root, #root > div.story {
+  font-family: "Proxima Nova";
   flex: 1;
   height: 100%;
 }
 
-.test {
-  background: #aeffcc;
-  height: 250px;
-  width: 400px;
+.relative {
+  position: relative !important;
 }
 
-.icon {
-  padding: 5px 10px;
-  background: #ffe2f6;
-  border: 1px dashed #f941a7;
+.text-center {
+  padding: 10px 0;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+
+  & > p {
+    font-size: 14px;
+    margin: 0;
+  }
+}
+
+.grid {
+  align-items: flex-end;
+  background: #fff;
   border-radius: 4px;
+  display: inline-flex;
+  height: 150px;
+  margin: 10px;
+  width: 150px;
 }
 
+.grid-color {
+  height: 200px !important;
+}
+
+.bottom-pos {
+  top: 0;
+}
+
+.row {
+  display: flex;
+
+  & > div {
+    align-items: flex-end;
+    background: #fff;
+    border-radius: 4px;
+    display: inline-flex;
+    margin: 10px;
+    height: 150px;
+    width: 150px;
+  }
+}
 
 .color {
-  &-blue {
-    //border: 3px solid #0e426b;
-    color: #f941a7 !important;
-  }
-
-  &-lighten-blue {
-    background: #e4f1ff !important;
-    box-sizing: border-box;
-    padding: 10px;
-  }
-
-  &-light-blue {
-    background: #aed7ff;
-  }
-
-  &-dark-blue {
-    background: #4f93ca;
-  }
-
-  &-lighten-green {
-    background: #e4fff3 !important;
-    box-sizing: border-box;
-    padding: 10px;
-  }
-
-  &-light-green {
-    background: #aeffcc;
+  &-lighten-red {
+    background: #ffcffa !important;
+    border-radius: 4px;
   }
 
   &-dark-green {
-    background: #4fca9f;
-  }
-
-  &-white {
-    background: #fff;
-    border: 3px dashed #aaaaaa;
-  }
-
-  &-muted {
-    background: #bebebe;
-  }
-
-  &-red {
-    background: #ff438a;
-    box-sizing: border-box;
-    padding: 10px;
+    color: #4fca9f;
   }
 }

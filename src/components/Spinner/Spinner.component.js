@@ -15,7 +15,7 @@ const Spinner = (props) => {
   const color = props.dark  ? 'dark' : 'light';
   const overlay = props.overlay ? style[`overlay__${color}`] : '';
   const blur = props.blur ? style.blur : '';
-  const {spinnerWrapper = ''} = props.className;
+  const {wrapper = ''} = props.className;
 
   const getIcon = () => {
     switch (name) {
@@ -58,6 +58,10 @@ const Spinner = (props) => {
   }, [props.isLoading]);
 
   useEffect(() => {
+    getPosition();
+  }, [props.position, props.overlay, props.blur, props.dark, props.mode]);
+
+  useEffect(() => {
     calcFullMode();
   }, [props.mode]);
 
@@ -88,15 +92,18 @@ const Spinner = (props) => {
     spinner.classList.remove(style[DEACTIVE_CLASS]);
   }
 
-  const getPosition = async () => {
-    const spinner = spinnerRef.current;
-    const positionDir = await getIsRTL() ? POSITION.RTL : POSITION.LTR;
-    const position = positionDir[props.position];
-    spinner.classList.add(style[POSITION_MAP[position]]);
+  const getPosition = () => {
+    (async () => {
+      const spinner = spinnerRef.current;
+      Object.keys(POSITION_MAP).forEach(item => spinner.classList.remove(style[POSITION_MAP[item]]));
+      const positionDir = await getIsRTL() ? POSITION.RTL : POSITION.LTR;
+      const position = positionDir[props.position];
+      spinner.classList.add(style[POSITION_MAP[position]]);
+    })();
   }
 
   return (
-    <div id={id} ref={spinnerRef} className={`${mode} ${overlay} ${blur} ${spinnerWrapper}`}>
+    <div id={id} ref={spinnerRef} className={`${style.react_spinner_anim} ${mode} ${overlay} ${blur} ${wrapper}`}>
       {getIcon()}
     </div>
   )
@@ -111,23 +118,23 @@ Spinner.defaultProps = {
   isLoading: false,
   mode: MODE.INSIDE,
   name: NAME.UIKIT,
-  overlay: true,
+  overlay: false,
   position: POSITION.LTR.CENTER,
   ratio: 1
 };
 
 Spinner.propTypes = {
-  blur: PropTypes.bool,
+  blur: PropTypes.bool, //
   className: PropTypes.object,
-  color: (props, propName, componentName) => isColorProp(props, propName, componentName),
-  dark: PropTypes.bool,
-  id: PropTypes.string,
-  isLoading: PropTypes.bool,
-  mode: PropTypes.string,
-  name: PropTypes.string,
-  overlay: PropTypes.bool,
-  position: PropTypes.string,
-  ratio: PropTypes.number
+  color: (props, propName, componentName) => isColorProp(props, propName, componentName), //
+  dark: PropTypes.bool, //
+  id: PropTypes.string, //
+  isLoading: PropTypes.bool, //
+  mode: PropTypes.string, //
+  name: PropTypes.string, //
+  overlay: PropTypes.bool, //
+  position: PropTypes.string, //
+  ratio: PropTypes.number //
 };
 
 export default Spinner;

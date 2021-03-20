@@ -2,6 +2,8 @@ $blur: 5px;
 $color-white: #fff;
 $color-black: #000;
 $opacity: 0.7;
+$z-index: 9999;
+$transition: .2s ease-in-out;
 
 .display_inline_block {
   display: inline-block;
@@ -14,31 +16,26 @@ $opacity: 0.7;
 
 .flex {
   display: inline-flex;
-
   &_bottom {
     @extend .flex;
     align-items: flex-end;
     justify-content: center;
   }
-
   &_center {
     @extend .flex;
     align-items: center;
     justify-content: center;
   }
-
   &_left {
     @extend .flex;
     align-items: center;
     justify-content: flex-start;
   }
-
   &_right {
     @extend .flex;
     align-items: center;
     justify-content: flex-end;
   }
-
   &_top {
     @extend .flex;
     align-items: flex-start;
@@ -47,6 +44,11 @@ $opacity: 0.7;
 }
 
 .react_spinner {
+  &_anim {
+    transition: $transition;
+    transition-property: background-color, backdrop-filter;
+  }
+
   &_position__relative {
     position: relative;
   }
@@ -63,6 +65,7 @@ $opacity: 0.7;
     position: fixed;
     right: 0;
     top: 0;
+    z-index: $z-index;
   }
 
   &__inside {
@@ -71,6 +74,7 @@ $opacity: 0.7;
     position: absolute;
     right: 0;
     top: 0;
+    z-index: $z-index;
   }
 }
 
@@ -94,7 +98,6 @@ $opacity: 0.7;
   border-radius: 0;
   overflow: visible;
   font: inherit;
-  color: inherit;
   text-transform: none;
   padding: 0;
   background-color: transparent;
