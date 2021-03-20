@@ -1,6 +1,5 @@
-import React from 'react'
-import styles from './styles.module.css'
+import {Spinner} from './components';
+import {MODE, NAME, POSITION} from './configs/variables';
+const POSITIONS = POSITION.LTR;
 
-export const ExampleComponent = ({ text }) => {
-  return <div className={styles.test}>Example Component: {text}</div>
-}
+export {Spinner as default, MODE, NAME, POSITIONS}
