@@ -43,14 +43,6 @@ export function isColorProp(props, propName, componentName) {
 export function isString(data) {
   return typeof data === 'string';
 }
-//
-// export function isFunction(data) {
-//   return typeof data === 'function';
-// }
-//
-// export function isPrimitive(data) {
-//   return !(isArray(data) || isObject(data) || isFunction(data)) && data !== null;
-// }
 
 export function isEmpty(data) {
   return !(isArray(data) ?
@@ -66,40 +58,3 @@ export function isEmpty(data) {
 export function isEmptyString(data) {
   return !(isString(data) ? data : false);
 }
-//
-// export function isEmptyArray(data) {
-//   return !(isArray(data) ? data.length : false);
-// }
-//
-// export function isEqualLength(source, target) {
-//   return [...source].length === [...target].length;
-// }
-//
-// export function isSameObject(source, target) {
-//   const sourceKeys = Object.keys(source);
-//   const targetKeys = Object.keys(target);
-//   if (isEmptyArray(sourceKeys) || isEmptyArray(targetKeys)) return isEqualLength(sourceKeys, targetKeys);
-//   if (!isEqualLength(sourceKeys, targetKeys)) return false;
-//
-//   return sourceKeys.every((sourceKey) => {
-//     return isObject(source[sourceKey]) && isObject(target[sourceKey]) ?
-//       isSameObject(source[sourceKey], target[sourceKey]) :
-//       isArray(source[sourceKey]) && isArray(target[sourceKey]) ?
-//         isSameArray(source[sourceKey], target[sourceKey]) :
-//         targetKeys.includes(sourceKey);
-//   });
-// }
-
-// export function isUnitMeasurement(data, unit) {
-//   const matchData = data.replace(unit, '').match(/^[0-9]+/);
-//   const unitData = data.substr(data.length - unit.length, unit.length);
-//   return unitData === unit && matchData.input === matchData[0];
-// }
-
-// export function resizeObserver(callback) {
-//   try {
-//     return new ResizeObserver(() => callback.call());
-//   } catch (error) {
-//     console.log('Error on resizeObserver : ', error);
-//   }
-// }
