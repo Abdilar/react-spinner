@@ -8,7 +8,8 @@ import * as Component from '../';
 import style from '../index.module.scss';
 
 const Spinner = (props) => {
-  const {name, id} = props;
+  const {name} = props;
+  const [id, setId] = setState('react-spinner');
   const [, setIsRTL, getIsRTL] = setState(false);
   const spinnerRef = useRef(null);
   const mode = props.mode === MODE.FULL ? style.mode__full : style.mode__inside;
@@ -38,7 +39,7 @@ const Spinner = (props) => {
       default:
         return <Component.UIkit {...props} />
     }
-  }
+  };
 
   const didMount = () => {
     (async () => {
@@ -47,11 +48,17 @@ const Spinner = (props) => {
       calcFullMode();
       await getPosition();
     })()
-  }
+  };
 
   useEffect(() => {
     didMount();
   }, []);
+
+  useEffect(() => {
+    const id = !isEmptyString(props.id) ? props.id : `react-spinner-${randomNumber(10000)}`;
+    setId(id);
+  }, [props.id]);
+
 
   useEffect(() => {
     toggleSpinner(props.isLoading)
@@ -81,7 +88,7 @@ const Spinner = (props) => {
       return;
     }
     parent.classList.remove(style[RELATIVE_CLASS]);
-  }
+  };
 
   const toggleSpinner = (isActive) => {
     const spinner = spinnerRef.current;
@@ -90,7 +97,7 @@ const Spinner = (props) => {
       return;
     }
     spinner.classList.remove(style[DEACTIVE_CLASS]);
-  }
+  };
 
   const getPosition = () => {
     (async () => {
@@ -100,7 +107,7 @@ const Spinner = (props) => {
       const position = positionDir[props.position];
       spinner.classList.add(style[POSITION_MAP[position]]);
     })();
-  }
+  };
 
   return (
     <div id={id} ref={spinnerRef} className={`${style.react_spinner_anim} ${mode} ${overlay} ${blur} ${wrapper}`}>
@@ -114,7 +121,6 @@ Spinner.defaultProps = {
   className: {},
   color: '',
   dark: false,
-  id: `spinner-${randomNumber(10000)}`,
   isLoading: false,
   mode: MODE.INSIDE,
   name: NAME.UIKIT,
