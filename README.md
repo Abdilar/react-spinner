@@ -53,7 +53,7 @@ Name | Type | Default | Description
 **overlay**|`boolean`|`false`|Boolean value to control whether the spinner has an overlay.
 **blur**|`boolean`|`false`|Boolean value to set the blur of the spinner background.
 **dark**|`boolean`|`false`|Boolean value to set the darkness of the spinner background.
-**id**|`string`|`spinner-[randomNumber(10000)]`|The unique identifier for the component.
+**id**|`string`|`react-spinner-[randomNumber]`|The unique identifier for the component.
 **ratio**|`number`|`1`|Specifies the size of the spinner.
 **color**|`string`|`''`|Specifies the color of the spinner (color format: `#ff00bb`, `rgb(124, 100, 0)`, `rgb(100%, 2.5%, 0%)`, `rgba(255, 0, 0, 0.5)`, `hsl(140, 2%, 50%)`, `hsla(140, 2%, 50%, 0.5)`).
 **position**|`string`|`CENTER`|Specifies the position of the spinner (position includes: `BOTTOM`, `CENTER`, `LEFT`, `RIGHT`, `TOP`).
@@ -65,4 +65,4 @@ See examples for more information (go to https://abdilar.github.io/react-spinner
 
 ### License
 
-MIT © [Saeed Abdilar](https://github.com/Abdilar)
+MIT Licensed. © Copyright [Saeed Abdilar](https://github.com/Abdilar)
