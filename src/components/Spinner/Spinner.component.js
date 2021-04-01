@@ -144,3 +144,5 @@ Spinner.propTypes = {
 };
 
 export default Spinner;
+
+// TODO: Add relativeTarget prop for relative's position
